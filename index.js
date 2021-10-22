@@ -1,5 +1,25 @@
-let weeklyExpenses = 0
-let monthlyExpenses = 0
-let annualExpenses = 0
+let expenses = {
+	"weekly": {
+		"questions": weeklyExpenseQuestions,
+		"total": 0
+	},
 
-// Your Code Here
+	"monthly": {
+		"questions": monthlyExpenseQuestions,
+		"total": 0
+	},
+
+	"annual": {
+		"questions": annualExpenseQuestions,
+		"total": 0
+	},
+}
+
+for (let expense in expenses) {
+	let currentExpense = expenses[expense]
+	for (let question of currentExpense.questions) {
+		let stringAnswer = window.prompt(question)
+		let numberAnswer = parseFloat(stringAnswer)
+		expenses[expense].total += numberAnswer
+	}
+}
